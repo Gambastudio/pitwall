@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/Gambastudio/pitwall/compare/pitwall-v0.3.2...pitwall-v0.4.0) (2026-07-10)
+
+
+### Features
+
+* **portal:** read-only web portal on top of pitwall's collectors ([#1](https://github.com/Gambastudio/pitwall/issues/1)) ([9c76af0](https://github.com/Gambastudio/pitwall/commit/9c76af0e4c8e2f4f123dab54edece21786070645))
+
 ## [0.3.2](https://github.com/erwins-enkel/pitwall/compare/pitwall-v0.3.1...pitwall-v0.3.2) (2026-07-05)
 
 
