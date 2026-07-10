@@ -112,6 +112,18 @@ jobs:
           checksum: sha256
           ref: refs/tags/${{ needs.prepare.outputs.tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
+      # The web portal ships as its own artifact from a SEPARATE build. Keep
+      # `features: web` off the pitwall step above so axum never links into the
+      # TUI binary; both archives attach to the same draft release, same version.
+      - uses: taiki-e/upload-rust-binary-action@f0d45ae91ee7b8ee928de7a9d04d893a08bcbec6 # v1, 2026-07-05
+        with:
+          bin: portal
+          features: web
+          target: ${{ matrix.target }}
+          archive: portal-$target
+          checksum: sha256
+          ref: refs/tags/${{ needs.prepare.outputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   # Publish the draft only after every target uploaded successfully. Publishing
   # creates the git tag and (with immutable releases enabled) freezes the release

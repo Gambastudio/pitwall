@@ -8,7 +8,11 @@ pub mod model;
 pub mod resource;
 pub mod resource_docker;
 pub mod resource_native;
+#[cfg(feature = "web")]
+pub mod snapshot;
 pub mod stats_math;
 pub mod theme;
 pub mod ui;
 pub mod vercel;
+#[cfg(feature = "web")]
+pub mod web;

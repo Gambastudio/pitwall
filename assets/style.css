@@ -1,0 +1,91 @@
+/* Catppuccin — Mocha by default, Latte under a light color scheme. Mirrors the
+   TUI's palette so the portal reads as the same tool. Two independent tier
+   channels: `.load-*` colors the row, `.mem-*` colors the mem cell. */
+:root {
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --text: #cdd6f4;
+  --subtext: #a6adc8;
+  --muted: #6c7086;
+  --green: #a6e3a1;
+  --yellow: #f9e2af;
+  --red: #f38ba8;
+  --blue: #89b4fa;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --base: #eff1f5;
+    --mantle: #e6e9ef;
+    --surface0: #ccd0da;
+    --surface1: #bcc0cc;
+    --text: #4c4f69;
+    --subtext: #5c5f77;
+    --muted: #8c8fa1;
+    --green: #40a02b;
+    --yellow: #df8e1d;
+    --red: #d20f39;
+    --blue: #1e66f5;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--base);
+  color: var(--text);
+  font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 0.75rem;
+}
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+h1 { font-size: 1.2rem; margin: 0; color: var(--blue); }
+h2 { font-size: 0.9rem; margin: 1rem 0 0.35rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.05em; }
+.muted { color: var(--muted); font-size: 0.8rem; }
+
+.errors {
+  background: var(--surface0);
+  border-left: 3px solid var(--red);
+  color: var(--red);
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  white-space: pre-wrap;
+}
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.3rem 0.5rem; white-space: nowrap; }
+th { color: var(--muted); font-weight: normal; border-bottom: 1px solid var(--surface0); }
+tbody tr { border-bottom: 1px solid var(--mantle); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Row channel (job state). */
+.load-idle td:first-child { color: var(--muted); }
+.load-busy td:first-child { color: var(--green); }
+.load-near_cap td { color: var(--red); }
+
+/* Mem-cell channel (independent). */
+.mem-warn { color: var(--yellow) !important; }
+.mem-critical { color: var(--red) !important; }
+
+.job { color: var(--text); }
+.job.idle { color: var(--muted); }
+
+svg.spark { vertical-align: middle; }
+.spark path { fill: none; stroke: var(--blue); stroke-width: 1; }
+
+.pill { font-size: 0.75rem; color: var(--muted); }
+.dot-running { color: var(--green); }
+.dot-queued { color: var(--yellow); }
+
+@media (max-width: 480px) {
+  body { padding: 0.5rem; font-size: 13px; }
+  th, td { padding: 0.25rem 0.35rem; }
+}

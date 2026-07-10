@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pitwall</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>pitwall</h1>
+    <span id="updated" class="muted">connecting…</span>
+  </header>
+
+  <div id="errors" class="errors" hidden></div>
+
+  <main>
+    <section>
+      <h2>Runners</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th class="num">cpu</th>
+              <th>~cpu</th>
+              <th class="num">mem</th>
+              <th>~mem</th>
+              <th>workflow › job</th>
+              <th class="num">elapsed</th>
+            </tr>
+          </thead>
+          <tbody id="runners"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="hosted-section" hidden>
+      <h2>Hosted jobs</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>workflow › job</th>
+              <th>label</th>
+              <th>branch</th>
+              <th class="num">elapsed</th>
+            </tr>
+          </thead>
+          <tbody id="hosted"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="vercel-section" hidden>
+      <h2>Vercel</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>project</th>
+              <th>target</th>
+              <th>branch</th>
+              <th>commit</th>
+              <th class="num">elapsed</th>
+            </tr>
+          </thead>
+          <tbody id="vercel"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
