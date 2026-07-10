@@ -28,6 +28,13 @@ jobs:
         run: cargo clippy --all-targets --locked -- -D warnings
       - name: test
         run: cargo test --locked
+      # The `web` feature (portal binary) is gated off by default, so lint and
+      # test it separately — the default steps above keep verifying the shipped
+      # TUI build. Both feature sets run; neither replaces the other.
+      - name: clippy (web)
+        run: cargo clippy --all-targets --locked --features web -- -D warnings
+      - name: test (web)
+        run: cargo test --locked --features web
 
   machete:
     runs-on: ubuntu-latest

@@ -119,6 +119,33 @@ pitwall
 
 Quit with `q`, `Esc`, or `Ctrl-C` — the terminal is restored on exit.
 
+## Web portal
+
+The same live view, served over HTTP instead of a TUI — for a browser or phone
+glance without SSH/tmux. It's a **second binary** behind the optional `web` Cargo
+feature, so the default `pitwall` build and its dependencies are untouched:
+
+```sh
+cargo build --release --features web --bin portal
+PITWALL_PORTAL_PORT=8787 ./target/release/portal   # default port 8787
+```
+
+The portal reuses the **same collectors and config** as the TUI (`repo`, prefix,
+slice cap, thresholds — see [Configuration](#configuration)), reruns them in its
+own poll loop, and serves:
+
+- `GET /` — a single, self-contained page (vanilla JS) that polls the API every
+  2 s and renders the runner table plus the hosted-jobs and Vercel sections,
+  mobile-first, in the Catppuccin palette.
+- `GET /api/state` — the JSON snapshot behind the page. Each runner carries the
+  same two independent tiers the TUI uses: `load` (`idle`/`busy`/`near_cap`, the
+  row) and `mem_level` (`normal`/`warn`/`critical`, the mem cell), both computed
+  server-side so the web and terminal views can't disagree.
+
+It is **read-only** (no control actions, no write scopes) and binds to
+`127.0.0.1` only — expose it on a private network yourself (e.g. `tailscale
+serve`); there is no built-in auth.
+
 ## Configuration
 
 Every setting is optional and resolved in this order (first wins): **env var →

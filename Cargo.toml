@@ -3,6 +3,12 @@ name = "pitwall"
 version = "0.3.2"
 edition = "2021"
 
+[features]
+# The read-only web portal (second binary `portal`). Off by default so the TUI
+# build and its dependency tree stay untouched; `tokio/net` is pulled in only
+# here, for axum's TcpListener.
+web = ["dep:axum", "tokio/net"]
+
 [dependencies]
 anyhow = "1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "process"] }
@@ -16,6 +22,11 @@ serde_json = "1"
 humantime = "2"
 toml = "1.1.2"
 unicode-width = "0.2"
+axum = { version = "0.8", optional = true }
+
+[[bin]]
+name = "portal"
+required-features = ["web"]
 
 [profile.release]
 strip = true
