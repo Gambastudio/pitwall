@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/Gambastudio/pitwall/compare/pitwall-v0.4.0...pitwall-v0.4.1) (2026-07-14)
+
+
+### Bug Fixes
+
+* **portal:** right-align numeric column headers with their values ([#3](https://github.com/Gambastudio/pitwall/issues/3)) ([90109c3](https://github.com/Gambastudio/pitwall/commit/90109c378828eede4999491a2919dbe39cbb01e3))
+
 ## [0.4.0](https://github.com/Gambastudio/pitwall/compare/pitwall-v0.3.2...pitwall-v0.4.0) (2026-07-10)
 
 
