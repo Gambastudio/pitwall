@@ -64,6 +64,7 @@ table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 0.3rem 0.5rem; white-space: nowrap; }
 th { color: var(--muted); font-weight: normal; border-bottom: 1px solid var(--surface0); }
 tbody tr { border-bottom: 1px solid var(--mantle); }
+th.num,
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* Row channel (job state). */
